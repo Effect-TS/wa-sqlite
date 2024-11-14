@@ -1,5 +1,11 @@
 # @effect/wa-sqlite
 
+## 0.1.1
+
+### Patch Changes
+
+- [`261bb21`](https://github.com/Effect-TS/wa-sqlite/commit/261bb21bedbd233721446c1a6af23beb78da65d4) Thanks [@tim-smart](https://github.com/tim-smart)! - fix type exports
+
 ## 0.1.0
 
 ### Minor Changes
