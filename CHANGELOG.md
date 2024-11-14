@@ -1,5 +1,11 @@
 # @effect/wa-sqlite
 
+## 0.1.2
+
+### Patch Changes
+
+- [`8af34ba`](https://github.com/Effect-TS/wa-sqlite/commit/8af34bab3b312eaa139fa26c062cae1b308cd9b9) Thanks [@tim-smart](https://github.com/tim-smart)! - add serialize/deserialize
+
 ## 0.1.1
 
 ### Patch Changes
