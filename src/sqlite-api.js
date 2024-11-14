@@ -470,6 +470,20 @@ export function Factory(Module) {
     return rows
   }
 
+  // @ts-ignore
+  sqlite3.execIterator = function* (db, sql) {
+    for (const stmt of sqlite3.statements(db, sql)) {
+      let columns
+      while (sqlite3.step(stmt) === SQLite.SQLITE_ROW) {
+        columns = columns ?? sqlite3.column_names(stmt)
+        const row = sqlite3.row(stmt)
+        // @ts-ignore
+        row.columns = columns
+        yield row
+      }
+    }
+  }
+
   sqlite3.finalize = (function () {
     const fname = "sqlite3_finalize"
     const f = Module.cwrap(fname, ...decl("n:n"), { async })

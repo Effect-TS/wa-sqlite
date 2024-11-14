@@ -542,17 +542,25 @@ declare interface SQLiteAPI {
    * @see https://www.sqlite.org/c3ref/exec.html
    * @param db database pointer
    * @param zSQL queries
-   * @param callback called for each output row
-   * @returns Promise resolving to `SQLITE_OK` (rejects on error)
+   * @returns An array of rows, each containing an array of column values
    */
-  exec(
+  exec(db: number, zSQL: string): Array<Array<any>>
+
+  /**
+   * One-step query execution interface
+   *
+   * The implementation of this function uses {@link row}, which makes a
+   * copy of blobs and returns BigInt for integers outside the safe integer
+   * bounds for Number.
+   * @see https://www.sqlite.org/c3ref/exec.html
+   * @param db database pointer
+   * @param zSQL queries
+   * @returns An iterator of rows, each containing an array of column values
+   */
+  execIterator(
     db: number,
     zSQL: string,
-    callback?: (
-      row: Array<SQLiteCompatibleType | null>,
-      columns: string[],
-    ) => void,
-  ): Array<Array<any>>
+  ): Iterable<Array<any> & { readonly columns: Array<string> }>
 
   /**
    * Destroy a prepared statement object compiled by {@link statements}
