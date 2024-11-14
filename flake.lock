@@ -1,0 +1,44 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1731531548,
+        "narHash": "sha256-sz8/v17enkYmfpgeeuyzniGJU0QQBfmAjlemAUYhfy8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "24f0d4acd634792badd6470134c387a3b039dace",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-emcc": {
+      "locked": {
+        "lastModified": 1727019693,
+        "narHash": "sha256-iGoo4GF8DJhk6ybDR32fPigr3sa2OnpQgKVbz/JckZQ=",
+        "owner": "willcohen",
+        "repo": "nixpkgs",
+        "rev": "378f60cc7bedc73eb748e9c73b3138d14b3ce6c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "willcohen",
+        "ref": "emscripten-3.1.67",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-emcc": "nixpkgs-emcc"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

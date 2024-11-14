@@ -13,3 +13,5 @@
 /debug
 /deps
 /tmp
+.direnv/
+node_modules/

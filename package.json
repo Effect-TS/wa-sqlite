@@ -1,6 +1,9 @@
 {
-  "name": "wa-sqlite",
-  "version": "1.0.8",
+  "name": "@effect/wa-sqlite",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.1.1",
   "type": "module",
   "main": "src/sqlite-api.js",
   "types": "src/types/index.d.ts",
@@ -22,6 +25,8 @@
     "test-manual": "web-test-runner --manual"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.9",
     "@types/jasmine": "^5.1.4",
     "@web/dev-server": "^0.4.6",
     "@web/test-runner": "^0.20.0",
@@ -29,6 +34,7 @@
     "comlink": "^4.4.1",
     "jasmine-core": "^4.5.0",
     "monaco-editor": "^0.34.1",
+    "prettier": "^3.3.3",
     "typedoc": "^0.25.7",
     "typescript": "^5.3.3",
     "web-test-runner-jasmine": "^0.0.6"
@@ -41,5 +47,5 @@
       "unplugged": true
     }
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b"
 }
