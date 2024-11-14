@@ -244,6 +244,42 @@ export function Factory(Module) {
     }
   })()
 
+  sqlite3.deserialize = (function () {
+    const fname = "sqlite3_deserialize"
+    const f = Module.cwrap(fname, ...decl("nnnnnn:n"))
+    return function (db, schema, data, szDb, szBuf, flags) {
+      verifyDatabase(db)
+      const ptr = Module._sqlite3_malloc(szDb)
+      Module.HEAPU8.subarray(ptr).set(data)
+      const result = f(db, schema, ptr, szDb, szBuf, flags)
+      return result
+    }
+  })()
+
+  const SQLITE_SERIALIZE_NOCOPY = 0x0_01
+
+  sqlite3.serialize = (function () {
+    const fname = "sqlite3_serialize"
+    const f = Module.cwrap(fname, ...decl("nsnn:n"))
+    return function (db, schema) {
+      verifyDatabase(db)
+      const piSize = tmpPtr[0]
+      let address = f(db, schema, piSize, 0)
+      if (address === 0) {
+        address = f(db, schema, piSize, SQLITE_SERIALIZE_NOCOPY)
+        const size = Module.getValue(piSize, "*")
+        const result = Module.HEAPU8.subarray(address, address + size)
+        // NOTE Given that the memory is owned by SQLite, we must copy it.
+        return new Uint8Array(result.slice())
+      } else {
+        const size = Module.getValue(piSize, "*")
+        const result = Module.HEAPU8.subarray(address, address + size)
+        // Here we're getting a copy of the memory, so we can return it directly.
+        return new Uint8Array(result)
+      }
+    }
+  })()
+
   sqlite3.close = (function () {
     const fname = "sqlite3_close"
     const f = Module.cwrap(fname, ...decl("n:n"), { async })

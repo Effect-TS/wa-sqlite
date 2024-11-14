@@ -332,6 +332,40 @@ declare interface SQLiteAPI {
   clear_bindings(stmt: number): number
 
   /**
+   * https://www.sqlite.org/c3ref/deserialize.html
+   * int sqlite3_deserialize(
+   *   sqlite3 *db,            The database connection
+   *   const char *zSchema,    Which DB to reopen with the deserialization
+   *   unsigned char *pData,   The serialized database content
+   *   sqlite3_int64 szDb,     Number bytes in the deserialization
+   *   sqlite3_int64 szBuf,    Total size of buffer pData[]
+   *   unsigned mFlags         Zero or more SQLITE_DESERIALIZE_* flags
+   * );
+   */
+  deserialize(
+    db: number,
+    zSchema: string,
+    pData: Uint8Array,
+    szDb: number,
+    szBuf: number,
+    mFlags: number,
+  ): number
+
+  /**
+   * unsigned char *sqlite3_serialize(
+   *  sqlite3 *db,           The database connection
+   *  const char *zSchema,   Which DB to serialize. ex: "main", "temp", ...
+   *  sqlite3_int64 *piSize, Write size of the DB here, if not NULL
+   *  unsigned int mFlags    Zero or more SQLITE_SERIALIZE_* flags
+   * );
+   */
+  serialize(
+    db: number,
+    zSchema: string,
+    // mFlags: number
+  ): Uint8Array
+
+  /**
    * Close database connection
    * @see https://www.sqlite.org/c3ref/close.html
    * @param db database pointer
