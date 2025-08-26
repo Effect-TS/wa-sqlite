@@ -25,18 +25,18 @@
     "test-manual": "web-test-runner --manual"
   },
   "devDependencies": {
-    "@changesets/changelog-github": "^0.5.0",
-    "@changesets/cli": "^2.27.9",
-    "@types/jasmine": "^5.1.4",
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.6",
+    "@types/jasmine": "^5.1.9",
     "@web/dev-server": "^0.4.6",
-    "@web/test-runner": "^0.20.0",
+    "@web/test-runner": "^0.20.2",
     "@web/test-runner-core": "^0.13.4",
-    "comlink": "^4.4.1",
-    "jasmine-core": "^4.5.0",
+    "comlink": "^4.4.2",
+    "jasmine-core": "^4.6.1",
     "monaco-editor": "^0.34.1",
-    "prettier": "^3.3.3",
-    "typedoc": "^0.25.7",
-    "typescript": "^5.3.3",
+    "prettier": "^3.6.2",
+    "typedoc": "^0.25.13",
+    "typescript": "^5.9.2",
     "web-test-runner-jasmine": "^0.0.6"
   },
   "dependenciesMeta": {
